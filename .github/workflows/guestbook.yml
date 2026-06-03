@@ -11,7 +11,7 @@ permissions:
 jobs:
   update-guestbook:
     runs-on: ubuntu-latest
-    if: startsWith(github.event.issue.title, 'Guestbook: Sign')
+    if: ${{ startsWith(github.event.issue.title, 'Guestbook: Sign') }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
