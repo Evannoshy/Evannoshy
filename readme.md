@@ -138,7 +138,7 @@ Click on any technology badge below to filter and search my repositories contain
   <a href="https://www.linkedin.com/in/evan-tan-3b0b59323" target="_blank">
     <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
   </a>
-  <a href="mailto:evan_tan@u.nus.edu" target="_blank">
+  <a href="mailto:evan_tan@u.nus.edu">
     <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail" />
   </a>
 </div>
