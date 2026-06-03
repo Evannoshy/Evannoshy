@@ -115,10 +115,13 @@ Click on any technology badge below to filter and search my repositories contain
   <table border="0">
     <tr>
       <td>
-        <img src="https://github-readme-stats.vercel.app/api?username=evannoshy&show_icons=true&theme=radical&hide_border=true&title_color=00f2fe&icon_color=4facfe" alt="Evan's GitHub Stats" />
+        <img src="https://github-readme-stats-fast.vercel.app/api?username=evannoshy&show_icons=true&theme=radical&hide_border=true&title_color=00f2fe&icon_color=4facfe" alt="Evan's GitHub Stats" />
       </td>
       <td>
-        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=evannoshy&layout=compact&theme=radical&hide_border=true&title_color=00f2fe" alt="Evan's Top Languages" />
+        <img src="https://streak-stats.demolab.com?user=evannoshy&theme=radical&hide_border=true&ring=00f2fe&fire=ab47bc" alt="Evan's GitHub Streak" />
+      </td>
+      <td>
+        <img src="https://github-readme-stats-fast.vercel.app/api/top-langs/?username=evannoshy&layout=compact&theme=radical&hide_border=true&title_color=00f2fe" alt="Evan's Top Languages" />
       </td>
     </tr>
   </table>
