@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>GitHub Profile Actions - Interactive Explorer & Workflow Generator</title>
+  <meta name="description" content="Explore real-world developers utilizing GitHub Actions to automate their profile READMEs. Search, view live profiles, and generate your own customized workflows instantly.">
+  <meta name="keywords" content="github profile, readme, github actions, automation, profile workflow, blog RSS, wakatime stats, spotify readme, lowlighter metrics">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Prism.js Syntax Highlighting CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  
+  <!-- Custom CSS Styling -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       HEADER SECTION
+       ========================================================================== -->
+  <header>
+    <div class="container header-content">
+      <div class="logo-section">
+        <span class="logo-icon"><i class="fab fa-github"></i></span>
+        <h1 class="logo-text" id="app-title">Profile Actions</h1>
+        <span class="logo-badge">Interactive</span>
+      </div>
+      <nav aria-label="Main Navigation">
+        <div class="nav-links">
+          <button id="nav-dashboard" class="nav-btn active" aria-controls="dashboard-section" aria-selected="true">
+            <i class="fas fa-compass"></i> Explorer Dashboard
+          </button>
+          <button id="nav-builder" class="nav-btn" aria-controls="builder-section" aria-selected="false">
+            <i class="fas fa-magic"></i> Workflow Generator
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       HERO BANNER
+       ========================================================================== -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="container">
+      <div class="hero-stats">
+        <div class="stat-item"><i class="fas fa-star" style="color: var(--accent-orange);"></i> <strong>Awesome List</strong></div>
+        <div class="stat-item"><i class="fas fa-robot" style="color: var(--accent-cyan);"></i> <strong>Actions Category</strong></div>
+      </div>
+      <h2 class="hero-title" id="hero-heading">Build an Awesome GitHub Profile with <span>Actions</span></h2>
+      <p class="hero-subtitle">
+        Explore profiles from the <code>awesome-github-profile-readme</code> collection that use GitHub Actions workflows. Learn how they automate coding metrics, blog posts, and spotify widgets, or generate your own config files!
+      </p>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       MAIN CONTENT CONTAINER
+       ========================================================================== -->
+  <main class="container">
+
+    <!-- ==========================================================================
+         EXPLORER DASHBOARD
+         ========================================================================== -->
+    <section id="dashboard-section" class="dashboard-section" aria-label="Profile Explorer Dashboard">
+      <div class="dashboard-controls">
+        <div class="search-filter-row">
+          <div class="search-wrapper">
+            <i class="fas fa-search search-icon" aria-hidden="true"></i>
+            <input type="text" id="search-input" class="search-input" placeholder="Search developers by name, tags, RSS, WakaTime..." aria-label="Search profiles">
+          </div>
+          <select id="filter-select" class="filter-select" aria-label="Filter profiles by Action category">
+            <option value="all">All Action Types</option>
+            <option value="blogs">✍️ Blog RSS Feeds</option>
+            <option value="wakatime">📊 WakaTime Stats</option>
+            <option value="metrics">📈 GitHub Metrics</option>
+            <option value="music">🎵 Spotify Playing</option>
+            <option value="activity">🗣️ GitHub Activity</option>
+            <option value="custom">⚙️ Custom Scripts</option>
+          </select>
+        </div>
+
+        <div class="chips-container" aria-label="Filter categories quick select">
+          <button class="chip active" data-filter="all">All Templates</button>
+          <button class="chip" data-filter="blogs">✍️ RSS Blogs</button>
+          <button class="chip" data-filter="wakatime">📊 Coding Stats</button>
+          <button class="chip" data-filter="metrics">📈 Profile Metrics</button>
+          <button class="chip" data-filter="music">🎵 Spotify Live</button>
+          <button class="chip" data-filter="activity">🗣️ GitHub Feed</button>
+          <button class="chip" data-filter="custom">⚙️ Scripts</button>
+        </div>
+      </div>
+
+      <!-- Profiles Grid -->
+      <div id="profiles-grid" class="profiles-grid" role="region" aria-live="polite">
+        <!-- Rendered via JavaScript -->
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         INTERACTIVE WORKFLOW BUILDER (WIZARD)
+         ========================================================================== -->
+    <section id="builder-section" class="builder-section" aria-label="Interactive Action Generator">
+      <div class="builder-layout">
+        
+        <!-- Step Wizard Form -->
+        <div class="builder-steps">
+          
+          <!-- Step 1: GitHub Username -->
+          <div class="step-card active" id="step-card-1">
+            <div class="step-header">
+              <div class="step-num">1</div>
+              <h3 class="step-title">Enter Profile Details</h3>
+            </div>
+            <div class="step-content">
+              <div class="form-group">
+                <label for="builder-username">GitHub Username</label>
+                <input type="text" id="builder-username" class="form-control" placeholder="octocat" aria-required="true">
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2: Select Feature -->
+          <div class="step-card active" id="step-card-2">
+            <div class="step-header">
+              <div class="step-num">2</div>
+              <h3 class="step-title">Choose Dynamic Feature</h3>
+            </div>
+            <div class="step-content">
+              <div class="features-select-grid" role="radiogroup" aria-label="Select profile automation feature">
+                <label class="feature-option" id="opt-rss">
+                  <input type="radio" name="builder-feature" value="rss" checked aria-checked="true">
+                  <div class="feature-details">
+                    <span class="feature-title">Latest Blog RSS Posts</span>
+                    <span class="feature-desc">Pull blog feed (Medium, Dev.to, Substack) to README.</span>
+                  </div>
+                </label>
+                <label class="feature-option" id="opt-waka">
+                  <input type="radio" name="builder-feature" value="waka" aria-checked="false">
+                  <div class="feature-details">
+                    <span class="feature-title">WakaTime Coding Hours Chart</span>
+                    <span class="feature-desc">Embed weekly coding time & language bars.</span>
+                  </div>
+                </label>
+                <label class="feature-option" id="opt-spotify">
+                  <input type="radio" name="builder-feature" value="spotify" aria-checked="false">
+                  <div class="feature-details">
+                    <span class="feature-title">Spotify "Now Playing" SVG</span>
+                    <span class="feature-desc">Display active track playing on your Spotify.</span>
+                  </div>
+                </label>
+                <label class="feature-option" id="opt-metrics">
+                  <input type="radio" name="builder-feature" value="metrics" aria-checked="false">
+                  <div class="feature-details">
+                    <span class="feature-title">GitHub Metrics Infographics</span>
+                    <span class="feature-desc">Render automated profile achievements and activity charts.</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3: Dynamic Inputs -->
+          <div class="step-card active" id="step-card-3">
+            <div class="step-header">
+              <div class="step-num">3</div>
+              <h3 class="step-title">Configure Parameters</h3>
+            </div>
+            <div class="step-content">
+              
+              <!-- RSS Parameters -->
+              <div id="form-rss">
+                <div class="form-group">
+                  <label for="input-rss-feed">RSS Feed URL</label>
+                  <input type="url" id="input-rss-feed" class="form-control" placeholder="https://dev.to/feed/octocat">
+                </div>
+                <div class="form-group">
+                  <label for="input-rss-tag">Comment Tag Identifier</label>
+                  <input type="text" id="input-rss-tag" class="form-control" placeholder="BLOG-POST-LIST">
+                </div>
+              </div>
+
+              <!-- WakaTime Parameters -->
+              <div id="form-waka" style="display: none;">
+                <div class="form-group">
+                  <label for="input-waka-theme">Display Template Style</label>
+                  <select id="input-waka-theme" class="form-control">
+                    <option value="classic">Default Layout (Text bars)</option>
+                    <option value="compact">Compact Languages</option>
+                  </select>
+                </div>
+                <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.5rem;">
+                  Note: Requires adding a WakaTime API key into your repository secrets.
+                </p>
+              </div>
+
+              <!-- Spotify Parameters -->
+              <div id="form-spotify" style="display: none;">
+                <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">
+                  The Spotify README integrations fetch and draw your active music tracks dynamically. This configuration requires setting up Client secrets in Spotify Developer console. Instructions are shown on the right panel.
+                </p>
+              </div>
+
+              <!-- Metrics Plugins selection -->
+              <div id="form-metrics" style="display: none;">
+                <div class="form-group">
+                  <label>Select Infographic Add-ons</label>
+                  <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.5rem;">
+                    <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.88rem; cursor: pointer;">
+                      <input type="checkbox" name="metrics-plugins" value="languages" checked> Top Languages detail charts
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.88rem; cursor: pointer;">
+                      <input type="checkbox" name="metrics-plugins" value="iso" checked> Isometric Contribution Calendar
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.88rem; cursor: pointer;">
+                      <input type="checkbox" name="metrics-plugins" value="habits" checked> Coding Habits & hours metrics
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Builder Output Panel -->
+        <div class="builder-output">
+          <div class="output-header">
+            <div class="output-tabs" role="tablist">
+              <button id="btn-gen-yaml" class="output-tab-btn active" role="tab" aria-selected="true" aria-controls="output-gen-yaml">Workflow YAML</button>
+              <button id="btn-gen-md" class="output-tab-btn" role="tab" aria-selected="false" aria-controls="output-gen-md">README Placement</button>
+            </div>
+            
+            <!-- Contextual Copy Buttons -->
+            <div>
+              <button id="copy-gen-yaml" class="copy-btn" style="padding: 0.3rem 0.8rem; font-size: 0.8rem;">
+                <i class="far fa-copy"></i> Copy YAML
+              </button>
+              <button id="copy-gen-md" class="copy-btn" style="padding: 0.3rem 0.8rem; font-size: 0.8rem; display: none;">
+                <i class="far fa-copy"></i> Copy Markdown
+              </button>
+            </div>
+          </div>
+
+          <div class="output-body">
+            
+            <!-- YAML View -->
+            <div id="output-gen-yaml" class="output-content active" role="tabpanel">
+              <pre class="output-pre"><code id="builder-yaml-code" class="language-yaml"># YAML code loading...</code></pre>
+            </div>
+            
+            <!-- README Markdown View -->
+            <div id="output-gen-md" class="output-content" role="tabpanel">
+              <pre class="output-pre"><code id="builder-md-code" class="language-markdown"># Markdown placement...</code></pre>
+            </div>
+
+            <!-- Dynamic guide information based on selection -->
+            <div id="guide-box"></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       MODAL OVERLAY (PROFILE DETAILS & LIVE VIEWER)
+       ========================================================================== -->
+  <div id="modal-overlay" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-name">
+    <div class="modal-container">
+      
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <div class="modal-profile-info">
+          <img id="modal-avatar-img" class="modal-avatar" src="https://github.com/github.png" alt="Profile avatar">
+          <div class="modal-title-area">
+            <h2 id="modal-name">Developer Name</h2>
+            <p id="modal-username">@username</p>
+          </div>
+        </div>
+        <div class="modal-controls">
+          <a id="modal-github-link" class="copy-btn" href="https://github.com" target="_blank" style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); color: var(--text-primary);">
+            <i class="fab fa-github"></i> Repository
+          </a>
+          <button id="close-modal-btn" class="close-modal-btn" aria-label="Close details modal">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Modal Tabs Navigation -->
+      <div class="modal-tabs" role="tablist">
+        <button class="modal-tab-btn active" data-tab="overview" role="tab" aria-selected="true" aria-controls="modal-tab-overview">Overview</button>
+        <button class="modal-tab-btn" data-tab="readme" role="tab" aria-selected="false" aria-controls="modal-tab-readme">Live Profile README</button>
+        <button class="modal-tab-btn" data-tab="workflow" role="tab" aria-selected="false" aria-controls="modal-tab-workflow">GitHub Action Code</button>
+      </div>
+
+      <!-- Modal Contents -->
+      <div class="modal-content-area">
+        
+        <!-- Tab: Overview -->
+        <div id="modal-tab-overview" class="modal-tab-content active" role="tabpanel">
+          <div class="info-tab-layout">
+            <div class="info-main-pane">
+              <div class="info-card">
+                <h3><i class="fas fa-info-circle" style="color: var(--accent-cyan);"></i> About the Integration</h3>
+                <div id="overview-description">
+                  <!-- JS Injection -->
+                </div>
+              </div>
+            </div>
+            
+            <div class="info-side-pane">
+              <div class="info-card">
+                <h3><i class="fas fa-sliders-h" style="color: var(--accent-purple);"></i> Metadata</h3>
+                <div class="meta-list">
+                  <div class="meta-row">
+                    <span class="meta-label">Action Category</span>
+                    <span class="meta-value" id="meta-workflow-type">Blogs RSS</span>
+                  </div>
+                  <div class="meta-row">
+                    <span class="meta-label">GitHub Account</span>
+                    <span class="meta-value" id="meta-author">@simonw</span>
+                  </div>
+                  <div class="meta-row" style="flex-direction: column; align-items: flex-start; gap: 0.5rem;">
+                    <span class="meta-label">Tags</span>
+                    <div id="meta-tags" style="display: flex; gap: 0.35rem; flex-wrap: wrap;">
+                      <!-- JS Tags -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab: Live Readme Markdown Render -->
+        <div id="modal-tab-readme" class="modal-tab-content" role="tabpanel">
+          <div id="modal-readme-content">
+            <!-- JS dynamic markdown parse and insert -->
+          </div>
+        </div>
+
+        <!-- Tab: Github Actions Code View -->
+        <div id="modal-tab-workflow" class="modal-tab-content" role="tabpanel">
+          <div class="yaml-container">
+            <div class="code-header-bar">
+              <span class="code-title"><i class="far fa-file-code"></i> workflow.yml</span>
+              <button id="copy-workflow-btn" class="copy-btn">
+                <i class="far fa-copy"></i> Copy Code
+              </button>
+            </div>
+            <pre class="yaml-pre"><code id="modal-workflow-code" class="language-yaml"># YAML code loading...</code></pre>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       FOOTER SECTION
+       ========================================================================== -->
+  <footer>
+    <div class="container footer-content">
+      <p>Made with <span class="footer-heart">♥</span> for the GitHub Community</p>
+      <div class="footer-links">
+        <a href="https://github.com/abhisheknaiidu/awesome-github-profile-readme" target="_blank">
+          <i class="fab fa-github"></i> Original Awesome List
+        </a>
+      </div>
+      <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.5rem;">
+        &copy; 2026 Interactive Profile Actions Explorer Dashboard. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       SCRIPTS SECTION
+       ========================================================================== -->
+  <!-- Marked.js for Markdown parsing -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  
+  <!-- Prism.js core and yaml syntax highlight parser -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-yaml.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markdown.min.js"></script>
+  
+  <!-- Application Logic -->
+  <script src="app.js"></script>
+</body>
+</html>
